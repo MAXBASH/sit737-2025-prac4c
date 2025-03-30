@@ -162,13 +162,11 @@ app.get("/divide", (req, res) => {
   }
 });
 
-// Exponentiation Endpoint
+//Exponentiation
 app.get("/power", (req, res) => {
   try {
     const { num1, num2 } = req.query;
     const [base, exponent] = validateNumbers(num1, num2);
-
-    // Handle negative and fractional exponents
     const result = Math.pow(base, exponent);
 
     logger.log({
@@ -186,24 +184,21 @@ app.get("/power", (req, res) => {
   }
 });
 
-// Square Root Endpoint
+//Square Root
 app.get("/sqrt", (req, res) => {
   try {
     const { num1 } = req.query;
     const number = validateNumber(num1);
-
-    // Handle negative number input
+    //Throw error for negative number
     if (number < 0) {
       throw new Error("Cannot calculate square root of a negative number");
     }
 
     const result = Math.sqrt(number);
-
     logger.log({
       level: "info",
-      message: `Square Root operation: √${number} = ${result}`,
+      message: `Square Root operation: ${number} = ${result}`,
     });
-
     res.json({ result });
   } catch (error) {
     logger.log({
@@ -214,17 +209,16 @@ app.get("/sqrt", (req, res) => {
   }
 });
 
-// Modulo Endpoint
+//Modulo
 app.get("/modulo", (req, res) => {
   try {
     const { num1, num2 } = req.query;
     const [dividend, divisor] = validateNumbers(num1, num2);
 
-    // Handle division by zero
+    //Throw division by zero error
     if (divisor === 0) {
       throw new Error("Modulo by zero is not allowed");
     }
-
     const result = dividend % divisor;
 
     logger.log({
