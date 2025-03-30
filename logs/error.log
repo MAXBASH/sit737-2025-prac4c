@@ -1,0 +1,3 @@
+{"level":"error","message":"Division by zero is not allowed","service":"calculator-microservice"}
+{"level":"error","message":"Number is required","service":"calculator-microservice"}
+{"level":"error","message":"Number is required","service":"calculator-microservice"}
